@@ -53,7 +53,11 @@ module.exports = function (grunt) {
 
     /* Create library out of remote JSON Schema. */
     grunt.registerTask('schema2lib', function() {
-        grunt.log.writeln('pippo');
+
+        /* Load JSON Schema. */
+        var schema = grunt.file.readJSON('resources/json/schema.json');
+        grunt.log.writeln(schema);
+        grunt.log.writeln(schema.title);
     });
 
     /* Register tasks. */
