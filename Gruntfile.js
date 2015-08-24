@@ -40,14 +40,25 @@ module.exports = function (grunt) {
                     }
                 }
             }
+        },
+        curl: {
+            'resources/json/schema.json': 'http://localhost:8080/faostat-api/v1.0/'
         }
     });
 
+    /* Load NPM tasks. */
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-curl');
+
+    /* Create library out of remote JSON Schema. */
+    grunt.registerTask('schema2lib', function() {
+        grunt.log.writeln('pippo');
+    });
 
     /* Register tasks. */
     grunt.registerTask('test', ['connect', 'jasmine']);
-    grunt.registerTask('default', ['test']);
+    //grunt.registerTask('default', ['test']);
+    grunt.registerTask('default', ['curl', 'schema2lib']);
 
 };
