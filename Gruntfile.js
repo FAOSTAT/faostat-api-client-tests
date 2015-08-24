@@ -58,6 +58,21 @@ module.exports = function (grunt) {
         var schema = grunt.file.readJSON('resources/json/schema.json');
         grunt.log.writeln(schema);
         grunt.log.writeln(schema.title);
+
+        /* TODO For each link in links -> create method. */
+
+        /* TODO For each link in links -> create validator. */
+        /* 1. Create JSON file out of the input parameters. */
+        /* 2. Validate the JSON file against the JSON Schema. */
+
+        /* TODO Convert functions in strings. */
+
+        /* TODO Load Handlebars template. */
+
+        /* TODO Add the strings to the template. */
+
+        /* TODO Write the file in src/js */
+
     });
 
     /* Register tasks. */
