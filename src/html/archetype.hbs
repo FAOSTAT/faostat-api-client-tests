@@ -2,30 +2,23 @@ define(['jquery'], function ($) {
 
     'use strict';
 
-    function FAOSTATAPIClient() {
+    function FAOSTATAPIClient(api_key, client_key) {
 
-        /* Default configuration. */
+        /* Store configuration. */
         this.CONFIG = {
-            lang: 'en',
-            schema: null,
-            base_url: 'http://localhost:8080/faostat-api/v1.0/'
+            api_key: api_key,
+            client_key: client_key
         };
 
     }
 
-    FAOSTATAPIClient.prototype.init = function(config) {
-
-        /* This... */
-        var _this = this;
-
-        /* Extend default configuration. */
-        this.CONFIG = $.extend(true, {}, this.CONFIG, config);
-
-    };
-
     {{#each methods}}
         {{{this}}}
     {{/each}}
+
+    FAOSTATAPIClient.prototype.isValidRequest = function() {
+        return true;
+    };
 
     return FAOSTATAPIClient;
 

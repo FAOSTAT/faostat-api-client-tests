@@ -46,6 +46,13 @@ module.exports = function (grunt) {
         },
         curl: {
             'resources/json/schema.json': base_url
+        },
+        uglify: {
+            my_target: {
+                files: {
+                    'dist/faostat-api.min.js': ['src/js/faostat-api.js']
+                }
+            }
         }
     });
 
@@ -53,6 +60,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-curl');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
     /* Create library out of remote JSON Schema. */
     grunt.registerTask('schema2lib', function() {
@@ -81,7 +89,7 @@ module.exports = function (grunt) {
                     parameters += ', ';
             }
 
-            /* Generate data object. */
+            /* Generate query parameters object. */
             var path_parameters = get_path_parameters(l.href);
             var data = [];
             for (j = 0 ; j < Object.keys(l.schema.properties).length ; j++) {
@@ -90,7 +98,6 @@ module.exports = function (grunt) {
                     data.push(o);
                 }
             }
-
             var data_source = grunt.file.read('src/html/data.hbs', [, {
                 encoding: 'utf8'
             }]);
@@ -99,8 +106,8 @@ module.exports = function (grunt) {
                 data: data
             };
             var data_html = data_template(data_dynamic_data);
-            grunt.log.writeln(data_html);
 
+            /* Generate the method. */
             var method_dynamic_data = {
                 url: '\'' + inject_params(l.href, l.schema.properties, schema.definitions) + '\'',
                 method: '\'' + l.method.toString().toUpperCase() + '\'',
@@ -108,8 +115,8 @@ module.exports = function (grunt) {
                 parameters: parameters,
                 data: data_html
             };
-
             methods.push(method_template(method_dynamic_data));
+
         }
 
         /* Load Handlebars template for tiles. */
@@ -141,7 +148,7 @@ module.exports = function (grunt) {
     /* Register tasks. */
     grunt.registerTask('test', ['connect', 'jasmine']);
     //grunt.registerTask('default', ['test']);
-    grunt.registerTask('default', ['curl', 'schema2lib']);
+    grunt.registerTask('default', ['curl', 'schema2lib', 'uglify']);
 
     /* Inject parameters in the URL. */
     var inject_params = function(href, properties, definitions) {
