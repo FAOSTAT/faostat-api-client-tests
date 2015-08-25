@@ -71,10 +71,13 @@ module.exports = function (grunt) {
         for (var i = 0 ; i < schema.links.length ; i++) {
             var l = schema.links[i];
             var method_dynamic_data = {
-                url: '\'' + base_url + l.href + '\'',
+                url: '\'' + inject_params(l.href, l.schema.properties, schema.definitions) + '\'',
                 method: '\'' + l.method.toString().toUpperCase() + '\'',
                 rel: l.rel
             };
+
+            inject_params(l.href, l.schema.properties, schema.definitions);
+
             methods.push(method_template(method_dynamic_data));
         }
 
@@ -108,5 +111,23 @@ module.exports = function (grunt) {
     grunt.registerTask('test', ['connect', 'jasmine']);
     //grunt.registerTask('default', ['test']);
     grunt.registerTask('default', ['curl', 'schema2lib']);
+
+    /* Inject parameters in the URL. */
+    var inject_params = function(href, properties, definitions) {
+        var final_url = base_url + href;
+        for (var i = 0 ; i < href.length ; i++) {
+            var start, end = null;
+            if (href.charAt(i) == '{') start = i;
+            if (href.charAt(i) == '}') end   = i;
+            if (start != null && end != null) {
+                var param = href.substring(1 + start, end);
+                final_url = final_url.replace(href.substring(start, 1 + end), '\' + ' + param + ' + \'');
+                grunt.log.writeln(final_url);
+                start = null;
+                end = null;
+            }
+        }
+        return final_url;
+    };
 
 };
