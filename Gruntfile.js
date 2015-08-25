@@ -69,6 +69,8 @@ module.exports = function (grunt) {
         var method_source = grunt.file.read('src/html/method.hbs', [, {encoding: 'utf8'}]);
         var method_template = Handlebars.compile(method_source);
         for (var i = 0 ; i < schema.links.length ; i++) {
+
+            /* Store current service description. */
             var l = schema.links[i];
 
             /* Generate method signature. */
@@ -79,11 +81,32 @@ module.exports = function (grunt) {
                     parameters += ', ';
             }
 
+            /* Generate data object. */
+            var path_parameters = get_path_parameters(l.href);
+            var data = [];
+            for (j = 0 ; j < Object.keys(l.schema.properties).length ; j++) {
+                var o = Object.keys(l.schema.properties)[j];
+                if (path_parameters.indexOf(Object.keys(l.schema.properties)[j]) < 0) {
+                    data.push(o);
+                }
+            }
+
+            var data_source = grunt.file.read('src/html/data.hbs', [, {
+                encoding: 'utf8'
+            }]);
+            var data_template = Handlebars.compile(data_source);
+            var data_dynamic_data = {
+                data: data
+            };
+            var data_html = data_template(data_dynamic_data);
+            grunt.log.writeln(data_html);
+
             var method_dynamic_data = {
                 url: '\'' + inject_params(l.href, l.schema.properties, schema.definitions) + '\'',
                 method: '\'' + l.method.toString().toUpperCase() + '\'',
                 rel: l.rel,
-                parameters: parameters
+                parameters: parameters,
+                data: data_html
             };
 
             methods.push(method_template(method_dynamic_data));
@@ -136,5 +159,20 @@ module.exports = function (grunt) {
         }
         return final_url;
     };
+
+    var get_path_parameters = function(href) {
+        var out = [];
+        for (var i = 0 ; i < href.length ; i++) {
+            var start, end = null;
+            if (href.charAt(i) == '{') start = i;
+            if (href.charAt(i) == '}') end = i;
+            if (start != null && end != null) {
+                out.push(href.substring(1 + start, end));
+                start = null;
+                end = null;
+            }
+        }
+        return out;
+    }
 
 };
