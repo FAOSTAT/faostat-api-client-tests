@@ -70,13 +70,21 @@ module.exports = function (grunt) {
         var method_template = Handlebars.compile(method_source);
         for (var i = 0 ; i < schema.links.length ; i++) {
             var l = schema.links[i];
+
+            /* Generate method signature. */
+            var parameters = '';
+            for (var j = 0 ; j < Object.keys(l.schema.properties).length ; j++) {
+                parameters += Object.keys(l.schema.properties)[j];
+                if (j < Object.keys(l.schema.properties).length - 1)
+                    parameters += ', ';
+            }
+
             var method_dynamic_data = {
                 url: '\'' + inject_params(l.href, l.schema.properties, schema.definitions) + '\'',
                 method: '\'' + l.method.toString().toUpperCase() + '\'',
-                rel: l.rel
+                rel: l.rel,
+                parameters: parameters
             };
-
-            inject_params(l.href, l.schema.properties, schema.definitions);
 
             methods.push(method_template(method_dynamic_data));
         }
@@ -122,7 +130,6 @@ module.exports = function (grunt) {
             if (start != null && end != null) {
                 var param = href.substring(1 + start, end);
                 final_url = final_url.replace(href.substring(start, 1 + end), '\' + ' + param + ' + \'');
-                grunt.log.writeln(final_url);
                 start = null;
                 end = null;
             }
