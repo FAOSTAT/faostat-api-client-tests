@@ -2,6 +2,9 @@
 
 module.exports = function (grunt) {
 
+    /* Base URL for FAOSTAT API service. */
+    var base_url = 'http://localhost:8080/faostat-api/v1.0/';
+
     /* Initiate configuration. */
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -42,7 +45,7 @@ module.exports = function (grunt) {
             }
         },
         curl: {
-            'resources/json/schema.json': 'http://localhost:8080/faostat-api/v1.0/'
+            'resources/json/schema.json': base_url
         }
     });
 
@@ -54,12 +57,38 @@ module.exports = function (grunt) {
     /* Create library out of remote JSON Schema. */
     grunt.registerTask('schema2lib', function() {
 
+        /* Load required libraries. */
+        var Handlebars = require('handlebars');
+        var $ = require('jquery');
+
         /* Load JSON Schema. */
         var schema = grunt.file.readJSON('resources/json/schema.json');
-        grunt.log.writeln(schema);
-        grunt.log.writeln(schema.title);
 
         /* TODO For each link in links -> create method. */
+        var methods = [];
+        var method_source = grunt.file.read('src/html/method.hbs', [, {encoding: 'utf8'}]);
+        var method_template = Handlebars.compile(method_source);
+        for (var i = 0 ; i < schema.links.length ; i++) {
+            var l = schema.links[i];
+            var method_dynamic_data = {
+                url: '\'' + base_url + l.href + '\'',
+                method: '\'' + l.method.toString().toUpperCase() + '\'',
+                rel: l.rel
+            };
+            methods.push(method_template(method_dynamic_data));
+        }
+
+        /* Load Handlebars template for tiles. */
+        var source = grunt.file.read('src/html/archetype.hbs', [, {
+            encoding: 'utf8'
+        }]);
+        var template = Handlebars.compile(source);
+        var dynamic_data = {
+            methods: methods,
+            validators: 'validators'
+        };
+        var html = template(dynamic_data);
+        grunt.file.write('src/js/faostat-api.js', template(dynamic_data), [, {encoding: 'utf8'}]);
 
         /* TODO For each link in links -> create validator. */
         /* 1. Create JSON file out of the input parameters. */

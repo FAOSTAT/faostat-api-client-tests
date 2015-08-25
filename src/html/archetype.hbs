@@ -1,0 +1,32 @@
+define(['jquery'], function ($) {
+
+    'use strict';
+
+    function FAOSTATAPIClient() {
+
+        /* Default configuration. */
+        this.CONFIG = {
+            lang: 'en',
+            schema: null,
+            base_url: 'http://localhost:8080/faostat-api/v1.0/'
+        };
+
+    }
+
+    FAOSTATAPIClient.prototype.init = function(config) {
+
+        /* This... */
+        var _this = this;
+
+        /* Extend default configuration. */
+        this.CONFIG = $.extend(true, {}, this.CONFIG, config);
+
+    };
+
+    {{#each methods}}
+        {{{this}}}
+    {{/each}}
+
+    return FAOSTATAPIClient;
+
+});
