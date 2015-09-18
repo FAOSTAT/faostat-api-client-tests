@@ -13,7 +13,8 @@
                 custom_options: {
                     options: {
                         base_url: 'http://fenixapps2.fao.org/api/v1.0/',
-                        output_name: 'FAOSTATAPIClient'
+                        output_name: 'FAOSTATAPIClient',
+                        output_folder: 'src/js'
                     }
                 }
             }
