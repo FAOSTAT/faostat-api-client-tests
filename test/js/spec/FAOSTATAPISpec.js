@@ -4,16 +4,22 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
     'use strict';
 
     var c = new FAOSTATAPIClient({}),
+        group_code = 'Q',
+        domain_code = 'QC',
         services = {
             abbreviations: null,
             groups: null,
             domains: null,
+            classifications: null,
+            codes: null,
             bulk_downloads: null
         },
         expected = {
             abbreviations: 100,
             groups: 15,
             domains: 7,
+            classifications: 236,
+            codes: 243,
             bulk_downloads: 9
         };
 
@@ -40,7 +46,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
         describe('has a service for Bulk Downloads', function () {
             beforeEach(function (done) {
                 c.bulkdownloads({
-                    domain_code: 'QC'
+                    domain_code: domain_code
                 }).then(function (response) {
                     services.bulk_downloads = response;
                     done();
@@ -48,6 +54,37 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             });
             it('that returns ' + expected.bulk_downloads + ' values', function () {
                 expect(services.bulk_downloads.data.length).toEqual(expected.bulk_downloads);
+            });
+        });
+
+        describe('has a service for Classifications', function () {
+            beforeEach(function (done) {
+                c.classifications({
+                    domain_code: domain_code
+                }).then(function (response) {
+                    services.classifications = response;
+                    done();
+                });
+            });
+            it('that returns ' + expected.classifications + ' values', function () {
+                expect(services.classifications.data.length).toEqual(expected.classifications);
+            });
+        });
+
+        describe('has a service for Codes', function () {
+            beforeEach(function (done) {
+                c.codes({
+                    id: 'countries',
+                    subcodelists: null,
+                    ord: null,
+                    domain_code: domain_code
+                }).then(function (response) {
+                    services.codes = response;
+                    done();
+                });
+            });
+            it('that returns ' + expected.codes + ' values', function () {
+                expect(services.codes.data.length).toEqual(expected.codes);
             });
         });
 
@@ -66,7 +103,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
         describe('has a service for Domains', function () {
             beforeEach(function (done) {
                 c.domains({
-                    group_code: 'Q'
+                    group_code: group_code
                 }).then(function (response) {
                     services.domains = response;
                     done();
