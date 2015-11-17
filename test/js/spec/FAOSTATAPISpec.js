@@ -14,7 +14,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             abbreviations: 100,
             groups: 15,
             domains: 7,
-            bulk_downloads: 10
+            bulk_downloads: 9
         };
 
     describe('FAOSTAT API Client', function () {
@@ -34,6 +34,20 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             });
             it('that returns ' + expected.abbreviations + ' values', function () {
                 expect(services.abbreviations.data.length).toEqual(expected.abbreviations);
+            });
+        });
+
+        describe('has a service for Bulk Downloads', function () {
+            beforeEach(function (done) {
+                c.bulkdownloads({
+                    domain_code: 'QC'
+                }).then(function (response) {
+                    services.bulk_downloads = response;
+                    done();
+                });
+            });
+            it('that returns ' + expected.bulk_downloads + ' values', function () {
+                expect(services.bulk_downloads.data.length).toEqual(expected.bulk_downloads);
             });
         });
 
