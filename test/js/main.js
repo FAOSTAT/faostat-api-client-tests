@@ -1,11 +1,14 @@
+/*global require, window*/
 require.config({
     baseUrl: '../src',
     paths: {
         'jquery': ['../test/js/libs/jquery.min'],
+        'q': ['../test/js/libs/q'],
         'jasmine': ['../test/js/libs/jasmine'],
         'jasmine-html': ['../test/js/libs/jasmine-html'],
         'jasmine-boot': ['../test/js/libs/boot'],
-        'faostat-api-client-spec': ['../test/js/spec/FAOSTATAPIClientSpec']
+        'faostat-api-client': ['../src/js/FAOSTATAPIClient'],
+        'faostat-api-spec': ['../test/js/spec/FAOSTATAPISpec']
     },
     shim: {
         'jasmine-html': {
@@ -17,8 +20,14 @@ require.config({
     }
 });
 
-require(['jasmine-boot'], function () {
-    require(['faostat-api-spec'], function () {
-        window.onload();
-    })
-});
+(function () {
+
+    'use strict';
+
+    require(['jasmine-boot'], function () {
+        require(['hello-world-spec'], function () {
+            window.onload();
+        });
+    });
+
+}());

@@ -2,3 +2,4 @@
 /node_modules/
 faostat-api-client.iml
 *.DS_Store
+*.iml
