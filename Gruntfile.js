@@ -24,8 +24,9 @@ module.exports = function (grunt) {
                             'jasmine': ['../test/js/libs/jasmine'],
                             'jasmine-html': ['../test/js/libs/jasmine-html'],
                             'jasmine-boot': ['../test/js/libs/boot'],
+                            'faostat-api-client': ['../src/js/FAOSTATAPIClient'],
                             'faostat-api-spec': ['../test/js/spec/FAOSTATAPISpec'],
-                            'faostat-api-client': ['../src/js/FAOSTATAPIClient']
+                            'abbreviations-spec': ['../test/js/spec/AbbreviationsSpec']
                         },
                         shim: {
                             'jasmine-html': {

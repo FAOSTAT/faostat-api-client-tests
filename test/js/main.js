@@ -8,7 +8,8 @@ require.config({
         'jasmine-html': ['../test/js/libs/jasmine-html'],
         'jasmine-boot': ['../test/js/libs/boot'],
         'faostat-api-client': ['../src/js/FAOSTATAPIClient'],
-        'faostat-api-spec': ['../test/js/spec/FAOSTATAPISpec']
+        'faostat-api-spec': ['../test/js/spec/FAOSTATAPISpec'],
+        'abbreviations-spec': ['../test/js/spec/AbbreviationsSpec']
     },
     shim: {
         'jasmine-html': {
