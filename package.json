@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "FAOSTAT API Client.",
   "main": "src/template-jasmine-requirejs.js",
+  "license": "GPL2",
   "scripts": {
     "test": "grunt test"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/FAOSTAT/faostat-api-client"
+    "url": "https://github.com/FAOSTAT/faostat-api-client-tests"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
