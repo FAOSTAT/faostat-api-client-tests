@@ -13,6 +13,11 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             classifications: null,
             codes: null,
             dimensions: null,
+            glossary: null,
+            groupsanddomains: null,
+            methodologies: null,
+            methodology: null,
+            units: null,
             bulk_downloads: null
         },
         expected = {
@@ -21,6 +26,11 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             domains: 7,
             classifications: 236,
             dimensions: 4,
+            glossary: 337,
+            groupsanddomains: 71,
+            methodologies: 42,
+            methodology: 1,
+            units: 37,
             codes: 243,
             bulk_downloads: 9
         };
@@ -73,20 +83,6 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             });
         });
 
-        describe('has a service for Dimensions', function () {
-            beforeEach(function (done) {
-                c.dimensions({
-                    domain_code: domain_code
-                }).then(function (response) {
-                    services.dimensions = response;
-                    done();
-                });
-            });
-            it('that returns ' + expected.dimensions + ' values', function () {
-                expect(services.dimensions.data.length).toEqual(expected.dimensions);
-            });
-        });
-
         describe('has a service for Codes', function () {
             beforeEach(function (done) {
                 c.codes({
@@ -104,15 +100,17 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             });
         });
 
-        describe('has a service for Groups', function () {
+        describe('has a service for Dimensions', function () {
             beforeEach(function (done) {
-                c.groups().then(function (response) {
-                    services.groups = response;
+                c.dimensions({
+                    domain_code: domain_code
+                }).then(function (response) {
+                    services.dimensions = response;
                     done();
                 });
             });
-            it('that returns ' + expected.groups + ' values', function () {
-                expect(services.groups.data.length).toEqual(expected.groups);
+            it('that returns ' + expected.dimensions + ' values', function () {
+                expect(services.dimensions.data.length).toEqual(expected.dimensions);
             });
         });
 
@@ -127,6 +125,80 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             });
             it('that returns ' + expected.domains + ' values for the Q group', function () {
                 expect(services.domains.data.length).toEqual(expected.domains);
+            });
+        });
+
+        describe('has a service for Glossary', function () {
+            beforeEach(function (done) {
+                c.glossary().then(function (response) {
+                    services.glossary = response;
+                    done();
+                });
+            });
+            it('that returns ' + expected.glossary + ' values', function () {
+                expect(services.glossary.data.length).toEqual(expected.glossary);
+            });
+        });
+
+        describe('has a service for Groups', function () {
+            beforeEach(function (done) {
+                c.groups().then(function (response) {
+                    services.groups = response;
+                    done();
+                });
+            });
+            it('that returns ' + expected.groups + ' values', function () {
+                expect(services.groups.data.length).toEqual(expected.groups);
+            });
+        });
+
+        describe('has a service for Groups and Domains', function () {
+            beforeEach(function (done) {
+                c.groupsanddomains().then(function (response) {
+                    services.groupsanddomains = response;
+                    done();
+                });
+            });
+            it('that returns ' + expected.groupsanddomains + ' values', function () {
+                expect(services.groupsanddomains.data.length).toEqual(expected.groupsanddomains);
+            });
+        });
+
+        describe('has a service for Methodologies', function () {
+            beforeEach(function (done) {
+                c.methodologies().then(function (response) {
+                    services.methodologies = response;
+                    done();
+                });
+            });
+            it('that returns ' + expected.methodologies + ' values', function () {
+                expect(services.methodologies.data.length).toEqual(expected.methodologies);
+            });
+        });
+
+        describe('has a service for Methodology', function () {
+            beforeEach(function (done) {
+                c.methodology({
+                    id: '4'
+                }).then(function (response) {
+                    services.methodology = response;
+                    done();
+                });
+            });
+            it('that returns ' + expected.methodology + ' values', function () {
+                expect(services.methodology.data.length).toEqual(expected.methodology);
+            });
+        });
+
+        describe('has a service for Units', function () {
+            beforeEach(function (done) {
+                c.units().then(function (response) {
+                    services.units = response;
+                    done();
+                });
+            });
+            it('that returns ' + expected.units + ' values', function () {
+                expect(services.units.data.length).toEqual(expected.units);
             });
         });
 
