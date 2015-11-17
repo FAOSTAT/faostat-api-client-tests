@@ -12,6 +12,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             domains: null,
             classifications: null,
             codes: null,
+            dimensions: null,
             bulk_downloads: null
         },
         expected = {
@@ -19,6 +20,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             groups: 15,
             domains: 7,
             classifications: 236,
+            dimensions: 4,
             codes: 243,
             bulk_downloads: 9
         };
@@ -68,6 +70,20 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             });
             it('that returns ' + expected.classifications + ' values', function () {
                 expect(services.classifications.data.length).toEqual(expected.classifications);
+            });
+        });
+
+        describe('has a service for Dimensions', function () {
+            beforeEach(function (done) {
+                c.dimensions({
+                    domain_code: domain_code
+                }).then(function (response) {
+                    services.dimensions = response;
+                    done();
+                });
+            });
+            it('that returns ' + expected.dimensions + ' values', function () {
+                expect(services.dimensions.data.length).toEqual(expected.dimensions);
             });
         });
 
