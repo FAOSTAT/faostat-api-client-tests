@@ -8,4 +8,4 @@ before_install:
 
 install: npm install
 
-before_script: grunt default
+before_script: grunt create_api_client

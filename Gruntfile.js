@@ -6,8 +6,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         connect: {
-            test : {
-                port : 8000
+            server: {
             }
         },
         jasmine: {
@@ -52,12 +51,13 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-jasmine');
     grunt.loadNpmTasks('grunt-jsonschema-amd-restclient-generator');
 
     /* Register tasks. */
     grunt.registerTask('test', ['connect', 'jasmine']);
+    grunt.registerTask('create_api_client', ['jsonschema_amd_restclient_generator']);
     grunt.registerTask('default', ['test']);
 
 };
