@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "FAOSTAT API Client.",
   "main": "src/template-jasmine-requirejs.js",
-  "license": "GPL2",
+  "license": "GPL-2.0",
   "scripts": {
     "test": "grunt test"
   },
