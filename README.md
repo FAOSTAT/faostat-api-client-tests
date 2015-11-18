@@ -76,3 +76,17 @@ jasmine: {
     }
 }
 ```
+## main.js
+The spec file must be declared in the RequireJS configuration file as well, ```test/js/main.js``` as follows:
+
+```javascript
+require.config({
+    baseUrl: '../src',
+    paths: {
+        ...
+        'abbreviations-spec': ['../test/js/spec/AbbreviationsSpec'],
+        ...
+    },
+    ...
+});
+```
