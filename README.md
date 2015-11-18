@@ -45,3 +45,34 @@ it('that returns 100 values', function () {
 ```
 
 ## Gruntfile.js
+The ```AbbreviationsSpec.js``` file must be dcleared in the ```jasmine``` section of the Grunt configuration file:
+
+```javascript
+
+jasmine: {
+    src: 'src/*.js',
+    options: {
+        specs: 'test/js/spec/*Spec.js',
+        host: 'http://127.0.0.1:8000/',
+        template: require('grunt-template-jasmine-requirejs'),
+        templateOptions: {
+            requireConfig: {
+                baseUrl: './src',
+                paths: {
+                    ...
+                    'abbreviations-spec': ['../test/js/spec/AbbreviationsSpec'],
+                    ...
+                },
+                shim: {
+                    'jasmine-html': {
+                        deps: ['jasmine']
+                    },
+                    'jasmine-boot': {
+                        deps: ['jasmine', 'jasmine-html']
+                    }
+                }
+            }
+        }
+    }
+}
+```
