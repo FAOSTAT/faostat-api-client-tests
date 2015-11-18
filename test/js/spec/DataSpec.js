@@ -63,7 +63,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
                     List5Codes: null,
                     List6Codes: null,
                     List7Codes: null,
-                    page_size: 19
+                    page_size: 10
                 }).then(function (response) {
                     services.data = response;
                     done();
