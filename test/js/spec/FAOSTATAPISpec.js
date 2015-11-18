@@ -19,12 +19,13 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             methodologies: null,
             methodology: null,
             units: null,
+            rankings: null,
             bulk_downloads: null
         },
         expected = {
             abbreviations: 100,
             groups: 15,
-            data: 4,
+            data: 3,
             domains: 7,
             classifications: 236,
             dimensions: 4,
@@ -33,6 +34,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             methodologies: 42,
             methodology: 1,
             units: 37,
+            rankings: 10,
             codes: 243,
             bulk_downloads: 9
         };
@@ -104,7 +106,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
 
         describe('has a service for Data', function () {
             beforeEach(function (done) {
-                c.dimensions({
+                c.data({
                     domain_code: domain_code,
                     List1Codes: ['2', '8'],
                     List2Codes: ['2510'],
@@ -210,6 +212,30 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             });
             it('that returns ' + expected.methodology + ' values', function () {
                 expect(services.methodology.data.length).toEqual(expected.methodology);
+            });
+        });
+
+        describe('has a service for Rankings', function () {
+            beforeEach(function (done) {
+                c.rankings({
+                    domain_codes: ['QA', 'QC', 'QD', 'QL', 'QP'],
+                    List1Codes: ['2'],
+                    List2Codes: ['5510'],
+                    List3Codes: ['_1'],
+                    List4Codes: ['2013'],
+                    List5Codes: null,
+                    List6Codes: null,
+                    List7Codes: null,
+                    filter_list: 1,
+                    rank_type: 'DESC',
+                    results: '10'
+                }).then(function (response) {
+                    services.rankings = response;
+                    done();
+                });
+            });
+            it('that returns ' + expected.rankings + ' values', function () {
+                expect(services.rankings.data.length).toEqual(expected.rankings);
             });
         });
 

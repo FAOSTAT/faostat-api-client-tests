@@ -10,6 +10,7 @@ require.config({
         'faostat-api-client': ['../src/js/FAOSTATAPIClient'],
         'faostat-api-spec': ['../test/js/spec/FAOSTATAPISpec'],
         'abbreviations-spec': ['../test/js/spec/AbbreviationsSpec'],
+        'rankings-spec': ['../test/js/spec/RankingsSpec'],
         'bulk-downloads-spec': ['../test/js/spec/BulkDownloadsSpec']
     },
     shim: {

@@ -27,6 +27,7 @@ module.exports = function (grunt) {
                             'faostat-api-client': ['../src/js/FAOSTATAPIClient'],
                             'faostat-api-spec': ['../test/js/spec/FAOSTATAPISpec'],
                             'abbreviations-spec': ['../test/js/spec/AbbreviationsSpec'],
+                            'rankings-spec': ['../test/js/spec/RankingsSpec'],
                             'bulk-downloads-spec': ['../test/js/spec/BulkDownloadsSpec']
                         },
                         shim: {
@@ -59,7 +60,7 @@ module.exports = function (grunt) {
 
     /* Register tasks. */
     grunt.registerTask('test', ['connect', 'jasmine']);
-    grunt.registerTask('create_api_client', ['jsonschema_amd_restclient_generator']);
+    grunt.registerTask('build', ['jsonschema_amd_restclient_generator']);
     grunt.registerTask('default', ['test']);
 
 };
