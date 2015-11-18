@@ -14,7 +14,7 @@ from the project's root folder. The latest version of the FAOSTAT API client mus
 # How to add new tests
 A new test requires a ```test/js/spec/*Spec.js``` file and some edits in the ```Gruntfile.js``` and ```test/js/main.js``` files. This example shows the configuration of the Abbreviations service test.
 
-## AbbreviationsSpec.js
+## The *Spec.js File
 This is the file that defines the test itself. The test is composed by a series of ```describe``` object, each one of them containing a ```beforeEach``` and ```it``` section. The ```beforeEach``` section is where the FAOSTAT API are invoked and the result is stored in a global variable. The ```it``` section tests the results against the expected value. The ```beforeEach``` section is required because the API client is asynchronous and the test must wait for the response before its execution. For instance, a simple test to query the abbreviations is defined as:
 
 ```javascript
@@ -76,7 +76,7 @@ jasmine: {
     }
 }
 ```
-## main.js
+## RequireJS: main.js
 The spec file must be declared in the RequireJS configuration file as well, ```test/js/main.js``` as follows:
 
 ```javascript
