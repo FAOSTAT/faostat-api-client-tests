@@ -5,8 +5,10 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
 
     var c = new FAOSTATAPIClient({}),
         services = {
-            data: null
-        };
+            data: null,
+            metadata: null
+        },
+        i;
 
     describe('Data Service', function () {
 
@@ -43,12 +45,19 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
                     List6Codes: null,
                     List7Codes: null
                 }).then(function (response) {
-                    services.data = response;
+                    services.data = response.data;
+                    services.metadata = response.metadata;
                     done();
                 });
             });
             it('made of 53 values', function () {
-                expect(services.data.data.length).toEqual(53);
+                expect(services.data.length).toEqual(53);
+            });
+            it('and a DSD with 14 columns', function () {
+                expect(services.metadata.dsd.length).toEqual(14);
+            });
+            it('and each one of them has the configuration for the pivot tables', function () {
+                expect(services.metadata.dsd[0].pivot).not.toBeNull();
             });
         });
 
