@@ -69,8 +69,8 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
                     done();
                 });
             });
-            it('to 10 values (BUG!!!)', function () {
-                expect(services.data.data.length).toEqual(9);
+            it('to 10 values', function () {
+                expect(services.data.data.length).toEqual(10);
             });
         });
 
