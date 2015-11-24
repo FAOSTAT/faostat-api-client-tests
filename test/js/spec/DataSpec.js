@@ -83,6 +83,32 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             });
         });
 
+        describe('can produce CSV files', function () {
+            beforeEach(function (done) {
+                c.data({
+                    domain_code: 'QC',
+                    List1Codes: ['2', '8'],
+                    List2Codes: ['2510'],
+                    List3Codes: ['15'],
+                    List4Codes: ['_1'],
+                    List5Codes: null,
+                    List6Codes: null,
+                    List7Codes: null,
+                    limit: -1,
+                    output_type: 'csv'
+                }).then(function (response) {
+                    services.data = response;
+                    done();
+                }).fail(function (e) {
+                    services.data = e.responseText;
+                    done();
+                });
+            });
+            it('as this one', function () {
+                expect(services.data).not.toBeNull();
+            });
+        });
+
     });
 
 });
