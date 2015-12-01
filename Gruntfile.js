@@ -28,6 +28,7 @@ module.exports = function (grunt) {
                             'faostat-api-spec': ['../test/js/spec/FAOSTATAPISpec'],
                             'abbreviations-spec': ['../test/js/spec/AbbreviationsSpec'],
                             'data-spec': ['../test/js/spec/DataSpec'],
+                            'data-bean-spec': ['../test/js/spec/DataBeanSpec'],
                             'data-size-spec': ['../test/js/spec/DataSizeSpec'],
                             'codes-spec': ['../test/js/spec/CodesSpec'],
                             'rankings-spec': ['../test/js/spec/RankingsSpec'],
