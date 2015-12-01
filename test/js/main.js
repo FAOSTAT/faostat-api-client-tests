@@ -10,6 +10,10 @@ require.config({
         'faostat-api-client': ['../src/js/FAOSTATAPIClient'],
         'faostat-api-spec': ['../test/js/spec/FAOSTATAPISpec'],
         'abbreviations-spec': ['../test/js/spec/AbbreviationsSpec'],
+        'data-bean-spec': ['../test/js/spec/DataBeanSpec'],
+        'data-spec': ['../test/js/spec/DataSpec'],
+        'data-size-spec': ['../test/js/spec/DataSizeSpec'],
+        'codes-spec': ['../test/js/spec/CodesSpec'],
         'rankings-spec': ['../test/js/spec/RankingsSpec'],
         'bulk-downloads-spec': ['../test/js/spec/BulkDownloadsSpec']
     },

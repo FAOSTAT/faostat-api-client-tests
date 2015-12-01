@@ -228,7 +228,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
                     List7Codes: null,
                     filter_list: 1,
                     rank_type: 'DESC',
-                    results: '10'
+                    limit: '10'
                 }).then(function (response) {
                     services.rankings = response;
                     done();
