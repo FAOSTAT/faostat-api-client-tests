@@ -14,7 +14,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
         describe('can fetch a single year', function () {
             beforeEach(function (done) {
                 c.databean({
-                    domain_code: 'QC',
+                    domain_codes: ['QC'],
                     filters: {
                         area: ['2'],
                         elements: ['2510'],
