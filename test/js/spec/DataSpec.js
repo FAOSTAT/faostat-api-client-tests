@@ -7,15 +7,14 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
         services = {
             data: null,
             metadata: null
-        },
-        i;
+        };
 
     describe('Data Service', function () {
 
         describe('can fetch a single year', function () {
             beforeEach(function (done) {
                 c.data({
-                    domain_code: 'QC',
+                    domain_codes: ['QC'],
                     List1Codes: ['2'],
                     List2Codes: ['2510'],
                     List3Codes: ['15'],
@@ -36,7 +35,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
         describe('can fetch a complete timeseries', function () {
             beforeEach(function (done) {
                 c.data({
-                    domain_code: 'QC',
+                    domain_codes: ['QC'],
                     List1Codes: ['2', '8'],
                     List2Codes: ['2510'],
                     List3Codes: ['15'],
@@ -64,7 +63,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
         describe('can limit the results', function () {
             beforeEach(function (done) {
                 c.data({
-                    domain_code: 'QC',
+                    domain_codes: ['QC'],
                     List1Codes: ['2', '8'],
                     List2Codes: ['2510'],
                     List3Codes: ['15'],
@@ -86,7 +85,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
         describe('can produce CSV files', function () {
             beforeEach(function (done) {
                 c.data({
-                    domain_code: 'QC',
+                    domain_codes: ['QC'],
                     List1Codes: ['2', '8'],
                     List2Codes: ['2510'],
                     List3Codes: ['15'],

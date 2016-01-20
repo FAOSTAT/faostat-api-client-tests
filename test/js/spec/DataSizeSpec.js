@@ -17,7 +17,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
         describe('can determine the size of the result of a query', function () {
             beforeEach(function (done) {
                 c.datasize({
-                    domain_code: 'QC',
+                    domain_codes: ['QC'],
                     List1Codes: ['2'],
                     List2Codes: ['2510'],
                     List3Codes: ['15'],

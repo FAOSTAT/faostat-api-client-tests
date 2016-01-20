@@ -35,6 +35,9 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             it('that returns ' + expected.rankings + ' values', function () {
                 expect(services.rankings.data.length).toEqual(expected.rankings);
             });
+            it('and a DSD with 14 columns', function () {
+                expect(services.rankings.metadata.dsd.length).toEqual(14);
+            });
         });
 
         describe('Commodities by regions/country: Trade', function () {

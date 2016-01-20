@@ -107,7 +107,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
         describe('has a service for Data', function () {
             beforeEach(function (done) {
                 c.data({
-                    domain_code: domain_code,
+                    domain_codes: [domain_code],
                     List1Codes: ['2', '8'],
                     List2Codes: ['2510'],
                     List3Codes: ['15'],
