@@ -18,7 +18,8 @@ require.config({
         'bulk-downloads-spec': ['../test/js/spec/BulkDownloadsSpec'],
         'documents-spec': ['../test/js/spec/DocumentsSpec'],
         'domains-tree-spec': ['../test/js/spec/DomainsTreeSpec'],
-        'domain-tabs-spec': ['../test/js/spec/DomainTabsSpec']
+        'domain-tabs-spec': ['../test/js/spec/DomainTabsSpec'],
+        'domain-reports-spec': ['../test/js/spec/DomainReportsSpec']
     },
     shim: {
         'jasmine-html': {
