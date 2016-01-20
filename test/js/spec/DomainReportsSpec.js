@@ -7,7 +7,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
         services = {
             reports: null
         },
-        domain_code = 'QC',
+        domain_code = 'FBS',
         expected = {
             reports: 1
         };

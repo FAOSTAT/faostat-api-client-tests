@@ -9,7 +9,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
         },
         domain_code = 'QC',
         expected = {
-            tabs: 361
+            tabs: 4
         };
 
     describe('Domain Tabs Service', function () {
