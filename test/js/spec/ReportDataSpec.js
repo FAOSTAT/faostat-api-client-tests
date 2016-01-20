@@ -9,11 +9,11 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             metadata: null
         };
 
-    describe('Report Headers Service', function () {
+    describe('Report Data Service', function () {
 
-        describe('can fetch the headers of a report', function () {
+        describe('can fetch the data of a report', function () {
             beforeEach(function (done) {
-                c.reportheaders({
+                c.reportdata({
                     domain_code: 'FBS',
                     report_code: 'FBS',
                     List1Codes: ['9'],
@@ -35,26 +35,14 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
                     done();
                 });
             });
-            it('made of 26 value', function () {
-                expect(services.data.data.length).toEqual(26);
+            it('made of 117 value', function () {
+                expect(services.data.data.length).toEqual(117);
             });
-            it('with a "RowNo" field', function () {
-                expect(services.data.data[0].RowNo).not.toBeNull();
+            it('with a "RowShade" field', function () {
+                expect(services.data.data[0].RowShade).not.toBeNull();
             });
-            it('with a "ColNo" field', function () {
-                expect(services.data.data[0].ColNo).not.toBeNull();
-            });
-            it('with a "RowSpan" field', function () {
-                expect(services.data.data[0].RowSpan).not.toBeNull();
-            });
-            it('with a "ColSpan" field', function () {
-                expect(services.data.data[0].ColSpan).not.toBeNull();
-            });
-            it('with a "Border" field', function () {
-                expect(services.data.data[0].Border).not.toBeNull();
-            });
-            it('with a "Label" field', function () {
-                expect(services.data.data[0].Label).not.toBeNull();
+            it('with a "Col1" field', function () {
+                expect(services.data.data[0].Col1).not.toBeNull();
             });
         });
 
