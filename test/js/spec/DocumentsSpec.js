@@ -9,7 +9,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
         },
         domain_code = 'Q',
         expected = {
-            documents: 1
+            documents: 2
         };
 
     describe('Documents Service', function () {

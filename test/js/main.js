@@ -16,7 +16,8 @@ require.config({
         'codes-spec': ['../test/js/spec/CodesSpec'],
         'rankings-spec': ['../test/js/spec/RankingsSpec'],
         'bulk-downloads-spec': ['../test/js/spec/BulkDownloadsSpec'],
-        'documents-spec': ['../test/js/spec/DocumentsSpec']
+        'documents-spec': ['../test/js/spec/DocumentsSpec'],
+        'domains-tree-spec': ['../test/js/spec/DomainsTreeSpec']
     },
     shim: {
         'jasmine-html': {
