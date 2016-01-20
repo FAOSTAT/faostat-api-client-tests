@@ -36,7 +36,8 @@ module.exports = function (grunt) {
                             'documents-spec': ['../test/js/spec/DocumentsSpec'],
                             'domains-tree-spec': ['../test/js/spec/DomainsTreeSpec'],
                             'domain-tabs-spec': ['../test/js/spec/DomainTabsSpec'],
-                            'domain-reports-spec': ['../test/js/spec/DomainReportsSpec']
+                            'domain-reports-spec': ['../test/js/spec/DomainReportsSpec'],
+                            'report-headers-spec': ['../test/js/spec/ReportHeadersSpec']
                         },
                         shim: {
                             'jasmine-html': {
