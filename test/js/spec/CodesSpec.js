@@ -7,7 +7,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
         languages = ['en', 'fr', 'es'],
         i;
 
-    for(i=0; i<languages.length;  i+=1) {
+    for (i = 0; i < languages.length; i += 1) {
 
         describe('Codes Service (' + languages[i] + ')', function () {
 
