@@ -13,6 +13,7 @@ require.config({
         'data-bean-spec': ['../test/js/spec/DataBeanSpec'],
         'data-spec': ['../test/js/spec/DataSpec'],
         'data-size-spec': ['../test/js/spec/DataSizeSpec'],
+        'dimensions-spec': ['../test/js/spec/DimensionsSpec'],
         'codes-spec': ['../test/js/spec/CodesSpec'],
         'rankings-spec': ['../test/js/spec/RankingsSpec'],
         'bulk-downloads-spec': ['../test/js/spec/BulkDownloadsSpec'],
