@@ -35,15 +35,6 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
                         done();
                     });
                 });
-                it('and every row contains all the LABELS declared in the DSD', function () {
-                    var z,
-                        col,
-                        row = services.data[0];
-                    for (z = 0; z < services.metadata.dsd.length; z += 1) {
-                        col = services.metadata.dsd[z];
-                        expect(row[col.label]).not.toBeUndefined();
-                    }
-                });
                 it('and every row contains all the KEYS declared in the DSD', function () {
                     var z,
                         col,
