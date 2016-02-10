@@ -1,5 +1,5 @@
 /*global define, describe, it, expect, beforeEach, jasmine*/
-define(['faostat-api-client'], function (FAOSTATAPIClient) {
+define(['faostat-api-client', 'jquery'], function (FAOSTATAPIClient, $) {
 
     'use strict';
 
@@ -8,6 +8,8 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
         i;
 
     for (i = 0; i < languages.length; i += 1) {
+
+        console.log('JQuery Version: ' + $.fn.jquery);
 
         describe('Data Service (' + languages[i] + ')', function () {
 
