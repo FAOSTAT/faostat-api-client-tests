@@ -14,12 +14,6 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
 
     describe('Abbreviations Service', function () {
 
-        describe('has a default base URL', function () {
-            it('http://fenixapps2.fao.org/api/v1.0/', function () {
-                expect(c.CONFIG.base_url).toEqual('http://fenixapps2.fao.org/api/v1.0/');
-            });
-        });
-
         describe('can query the PRODUCTION database', function () {
             beforeEach(function (done) {
                 c.abbreviations({

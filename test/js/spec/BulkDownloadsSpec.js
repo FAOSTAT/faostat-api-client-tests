@@ -9,6 +9,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
         },
         domain_code = 'QC',
         expected = {
+            // TODO: this could change if 'QC' bulk_downloads number will change
             bulk_downloads: 9
         };
 

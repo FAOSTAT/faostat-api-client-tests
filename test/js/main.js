@@ -21,7 +21,8 @@ require.config({
         'domain-tabs-spec': ['../test/js/spec/DomainTabsSpec'],
         'domain-reports-spec': ['../test/js/spec/DomainReportsSpec'],
         'report-headers-spec': ['../test/js/spec/ReportHeadersSpec'],
-        'report-data-spec': ['../test/js/spec/ReportDataSpec']
+        'report-data-spec': ['../test/js/spec/ReportDataSpec'],
+        'deploy-spec': ['../test/js/spec/DeploySpec']
     },
     shim: {
         'jasmine-html': {
