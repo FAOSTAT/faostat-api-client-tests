@@ -7,7 +7,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
         languages = ['en', 'fr', 'es'],
         i;
 
-    for(i=0; i<languages.length;  i+=1) {
+    for (i = 0; i < languages.length; i += 1) {
 
         describe('Data Service (' + languages[i] + ')', function () {
 
@@ -17,7 +17,45 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
                     metadata: null
                 };
 
-            describe('can fetch a single year ('+ lang + ')', function () {
+            describe('returns data (' + lang + ')', function () {
+                beforeEach(function (done) {
+                    c.data({
+                        domain_codes: ['QC'],
+                        lang: lang,
+                        List1Codes: ['2'],
+                        List2Codes: ['2510'],
+                        List3Codes: ['15'],
+                        List4Codes: ['2012'],
+                        List5Codes: null,
+                        List6Codes: null,
+                        List7Codes: null
+                    }).then(function (response) {
+                        services.data = response.data;
+                        services.metadata = response.metadata;
+                        done();
+                    });
+                });
+                it('and every row contains all the LABELS declared in the DSD', function () {
+                    var z,
+                        col,
+                        row = services.data[0];
+                    for (z = 0; z < services.metadata.dsd.length; z += 1) {
+                        col = services.metadata.dsd[z];
+                        expect(row[col.label]).not.toBeUndefined();
+                    }
+                });
+                it('and every row contains all the KEYS declared in the DSD', function () {
+                    var z,
+                        col,
+                        row = services.data[0];
+                    for (z = 0; z < services.metadata.dsd.length; z += 1) {
+                        col = services.metadata.dsd[z];
+                        expect(row[col.key]).not.toBeUndefined();
+                    }
+                });
+            });
+
+            describe('can fetch a single year (' + lang + ')', function () {
                 beforeEach(function (done) {
                     c.data({
                         domain_codes: ['QC'],
@@ -39,7 +77,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
                 });
             });
 
-            describe('can fetch a complete timeseries ('+ lang + ')', function () {
+            describe('can fetch a complete timeseries (' + lang + ')', function () {
                 beforeEach(function (done) {
                     c.data({
                         domain_codes: ['QC'],
@@ -101,7 +139,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
                  });*/
             });
 
-            describe('can limit the results ('+ lang + ')', function () {
+            describe('can limit the results (' + lang + ')', function () {
                 beforeEach(function (done) {
                     c.data({
                         domain_codes: ['QC'],
@@ -124,7 +162,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
                 });
             });
 
-            describe('can produce CSV files ('+ lang + ')', function () {
+            describe('can produce CSV files (' + lang + ')', function () {
                 beforeEach(function (done) {
                     c.data({
                         domain_codes: ['QC'],
@@ -152,7 +190,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
                 });
             });
 
-            describe('can use different coding systems ('+ lang + ')', function () {
+            describe('can use different coding systems (' + lang + ')', function () {
                 beforeEach(function (done) {
                     c.data({
                         domain_codes: ['QC'],
@@ -187,24 +225,24 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
                 });
             });
 
-            describe('can group by ('+ lang + ')', function () {
+            describe('can group by (' + lang + ')', function () {
                 beforeEach(function (done) {
                     c.data({
-                        datasource:'production',
-                        domain_codes:'QC',
-                        decimal_places:2,
-                        List1Codes:'5000>',
-                        List2Codes:2510,
-                        List3Codes:1717,
-                        List4Codes:2010,
+                        datasource: 'production',
+                        domain_codes: 'QC',
+                        decimal_places: 2,
+                        List1Codes: '5000>',
+                        List2Codes: 2510,
+                        List3Codes: 1717,
+                        List4Codes: 2010,
                         List5Codes: null,
                         List6Codes: null,
                         List7Codes: null,
                         group_by: 'year',
-                        order_by:'area',
+                        order_by: 'area',
                         operator: 'AVG',
-                        page_size:0,
-                        limit:-1
+                        page_size: 0,
+                        limit: -1
                     }).then(function (response) {
                         services.data = response;
                         done();
