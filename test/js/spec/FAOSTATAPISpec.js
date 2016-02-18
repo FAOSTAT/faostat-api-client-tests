@@ -41,12 +41,6 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
 
     describe('FAOSTAT API Client', function () {
 
-        describe('has a default base URL', function () {
-            it('http://fenixapps2.fao.org/api/v1.0/', function () {
-                expect(c.CONFIG.base_url).toEqual('http://fenixapps2.fao.org/api/v1.0/');
-            });
-        });
-
         describe('has a service for Abbreviations', function () {
             beforeEach(function (done) {
                 c.abbreviations().then(function (response) {
@@ -104,9 +98,10 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             });
         });
 
-        describe('has a service for Data', function () {
+        /** TODO: do it for data **/
+        describe('has a service for Data bean', function () {
             beforeEach(function (done) {
-                c.data({
+                c.databean({
                     domain_codes: [domain_code],
                     List1Codes: ['2', '8'],
                     List2Codes: ['2510'],
