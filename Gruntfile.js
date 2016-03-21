@@ -26,6 +26,8 @@
                                 'jasmine': ['../test/js/libs/jasmine'],
                                 'jasmine-html': ['../test/js/libs/jasmine-html'],
                                 'jasmine-boot': ['../test/js/libs/boot'],
+
+                                // TODO: check it. the paths are not used for the tests even if commented out.
                                 'faostat-api-client': ['../src/js/FAOSTATAPIClient'],
                                 'faostat-api-spec': ['../test/js/spec/FAOSTATAPISpec'],
                                 'abbreviations-spec': ['../test/js/spec/AbbreviationsSpec'],
@@ -37,7 +39,7 @@
                                 'rankings-spec': ['../test/js/spec/RankingsSpec'],
                                 'bulk-downloads-spec': ['../test/js/spec/BulkDownloadsSpec'],
                                 'documents-spec': ['../test/js/spec/DocumentsSpec'],
-                                'domains-tree-spec': ['../test/js/spec/DomainsTreeSpec'],
+                                //'domains-tree-spec': ['../test/js/spec/DomainsTreeSpec'],
                                 'domain-tabs-spec': ['../test/js/spec/DomainTabsSpec'],
                                 'domain-reports-spec': ['../test/js/spec/DomainReportsSpec'],
                                 'report-headers-spec': ['../test/js/spec/ReportHeadersSpec'],
@@ -60,6 +62,7 @@
                 custom_options: {
                     options: {
                         base_url: 'http://fenix.fao.org/faostat/api/v1.0/',
+                        //base_url: 'http://localhost:3000/api/v1.0/',
                         //base_url: 'http://fenixapps2.fao.org/api/v1.0/',
                         //base_url: 'http://localhost:8081/api/v1.0/',
                         output_name: 'FAOSTATAPIClient',

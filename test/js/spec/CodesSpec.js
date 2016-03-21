@@ -27,8 +27,6 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
                     c.codes({
                         id: 'countries',
                         lang: lang,
-                        subcodelists: null,
-                        ord: null,
                         domain_code: domain_code
                     }).then(function (response) {
                         services.codes = response.data;
@@ -45,6 +43,15 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
                 it('and it maps "countries" to "List1Codes"', function () {
                     expect(services.metadata.parameters.parameter).toEqual('List1Codes');
                 });
+                it('with a "code" field', function () {
+                    expect(services.codes[0].code).not.toBeNull();
+                    expect(services.codes[0].code).toBeDefined();
+                });
+                it('with a "label" field', function () {
+                    expect(services.codes[0].label).not.toBeNull();
+                    expect(services.codes[0].label).toBeDefined();
+                });
+
             });
 
             describe('can fetch all the subdomains of "area" (' + lang + ')', function () {
@@ -52,8 +59,6 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
                     c.codes({
                         id: 'area',
                         lang: lang,
-                        subcodelists: null,
-                        ord: null,
                         domain_code: domain_code,
                         group_subdimensions: true
                     }).then(function (response) {
@@ -68,11 +73,11 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
                 it('the 1st contains ' + expected.codes + ' countries', function () {
                     expect(services.codes[0].data.length).toEqual(expected.codes);
                 });
-                it('the 2nd contains 28 regions', function () {
-                    expect(services.codes[1].data.length).toEqual(28);
+                it('the 2nd contains 56 regions', function () {
+                    expect(services.codes[1].data.length).toEqual(56);
                 });
-                it('the 3rd contains 6 special groups', function () {
-                    expect(services.codes[2].data.length).toEqual(6);
+                it('the 3rd contains 12 special groups', function () {
+                    expect(services.codes[2].data.length).toEqual(12);
                 });
                 it('and it maps "countries" to "List1Codes"', function () {
                     expect(services.metadata.parameters.parameter).toEqual('List1Codes');

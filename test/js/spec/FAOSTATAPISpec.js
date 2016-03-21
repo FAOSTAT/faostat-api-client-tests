@@ -22,6 +22,8 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             rankings: null,
             bulk_downloads: null
         },
+        // TODO: the check should be on the data and output expected not on the length.
+        // TODO: The length is not a proper parameter.
         expected = {
             abbreviations: 100,
             groups: 15,
@@ -30,7 +32,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             classifications: 236,
             dimensions: 4,
             glossary: 337,
-            groupsanddomains: 71,
+            groupsanddomains: 75,
             methodologies: 42,
             methodology: 1,
             units: 37,
@@ -146,6 +148,15 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             it('that returns ' + expected.domains + ' values for the Q group', function () {
                 expect(services.domains.data.length).toEqual(expected.domains);
             });
+            it('with a "code" field', function () {
+                expect(services.domains.data[0].code).not.toBeNull();
+                expect(services.domains.data[0].code).toBeDefined();
+            });
+            it('with a "label" field', function () {
+                expect(services.domains.data[0].label).not.toBeNull();
+                expect(services.domains.data[0].label).toBeDefined();
+            });
+
         });
 
         describe('has a service for Glossary', function () {
@@ -170,6 +181,14 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             it('that returns ' + expected.groups + ' values', function () {
                 expect(services.groups.data.length).toEqual(expected.groups);
             });
+            it('with a "code" field', function () {
+                expect(services.groups.data[0].code).not.toBeNull();
+                expect(services.groups.data[0].code).toBeDefined();
+            });
+            it('with a "label" field', function () {
+                expect(services.groups.data[0].label).not.toBeNull();
+                expect(services.groups.data[0].label).toBeDefined();
+            });
         });
 
         describe('has a service for Groups and Domains', function () {
@@ -182,6 +201,31 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             it('that returns ' + expected.groupsanddomains + ' values', function () {
                 expect(services.groupsanddomains.data.length).toEqual(expected.groupsanddomains);
             });
+            it('with a "group_code" field', function () {
+                expect(services.groupsanddomains.data[0].group_code).not.toBeNull();
+                expect(services.groupsanddomains.data[0].group_code).toBeDefined();
+            });
+            it('with a "group_name" field', function () {
+                expect(services.groupsanddomains.data[0].group_name).not.toBeNull();
+                expect(services.groupsanddomains.data[0].group_name).toBeDefined();
+            });
+            it('with a "domain_code" field', function () {
+                expect(services.groupsanddomains.data[0].domain_code).not.toBeNull();
+                expect(services.groupsanddomains.data[0].domain_code).toBeDefined();
+            });
+            it('with a "domain_name" field', function () {
+                expect(services.groupsanddomains.data[0].domain_name).not.toBeNull();
+                expect(services.groupsanddomains.data[0].domain_name).toBeDefined();
+            });
+            it('with a "Ord" field', function () {
+                expect(services.groupsanddomains.data[0].ord).not.toBeNull();
+                expect(services.groupsanddomains.data[0].ord).toBeDefined();
+            });
+            it('with a "date_update" field', function () {
+                expect(services.groupsanddomains.data[0].date_update).not.toBeNull();
+                expect(services.groupsanddomains.data[0].date_update).toBeDefined();
+            });
+
         });
 
         describe('has a service for Methodologies', function () {

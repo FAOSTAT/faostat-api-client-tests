@@ -18,7 +18,7 @@ require.config({
         'rankings-spec': ['../test/js/spec/RankingsSpec'],
         'bulk-downloads-spec': ['../test/js/spec/BulkDownloadsSpec'],
         'documents-spec': ['../test/js/spec/DocumentsSpec'],
-        'domains-tree-spec': ['../test/js/spec/DomainsTreeSpec'],
+        //'domains-tree-spec': ['../test/js/spec/DomainsTreeSpec'],
         'domain-tabs-spec': ['../test/js/spec/DomainTabsSpec'],
         'domain-reports-spec': ['../test/js/spec/DomainReportsSpec'],
         'report-headers-spec': ['../test/js/spec/ReportHeadersSpec'],

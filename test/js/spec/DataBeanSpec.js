@@ -86,8 +86,8 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
                         done();
                     });
                 });
-                it('made of 53 values', function () {
-                    expect(services.data.length).toEqual(53);
+                it('made of 54 values', function () {
+                    expect(services.data.length).toEqual(54);
                 });
                 it('and a DSD with 14 columns', function () {
                     expect(services.metadata.dsd.length).toEqual(14);

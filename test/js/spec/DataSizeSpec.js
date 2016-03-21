@@ -9,7 +9,7 @@ define(['faostat-api-client'], function (FAOSTATAPIClient) {
             metadata: null
         },
         expected = {
-            data: 53
+            data: 54
         };
 
     describe('Data Size Service', function () {
