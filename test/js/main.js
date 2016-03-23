@@ -4,6 +4,7 @@ require.config({
     paths: {
         'jquery': ['../test/js/libs/jquery.min'],
         'q': ['../test/js/libs/q'],
+        'amplify': ['../test/js/libs/amplify.min'],
         'jasmine': ['../test/js/libs/jasmine'],
         'jasmine-html': ['../test/js/libs/jasmine-html'],
         'jasmine-boot': ['../test/js/libs/boot'],
