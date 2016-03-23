@@ -62,11 +62,10 @@
             jsonschema_amd_restclient_generator: {
                 custom_options: {
                     options: {
-                        //base_url: 'http://fenix.fao.org/faostat/api/v1.0/',
-                        //base_url: 'http://fenix.fao.org/faostat/api/v1.0/',
+                        base_url: 'http://fenix.fao.org/faostat/api/v1.0/',
                         //base_url: 'http://localhost:3000/api/v1.0/',
                         //base_url: 'http://fenixapps2.fao.org/api/v1.0/',
-                        base_url: 'http://localhost:8081/api/v1.0/',
+                        //base_url: 'http://localhost:8081/api/v1.0/',
                         output_name: 'FAOSTATAPIClient',
                         output_folder: 'src/js',
                         useQ: true,
