@@ -23,6 +23,7 @@
                             paths: {
                                 'jquery': ['../test/js/libs/jquery.min'],
                                 'q': ['../test/js/libs/q'],
+                                'amplify': ['../test/js/libs/amplify.min'],
                                 'jasmine': ['../test/js/libs/jasmine'],
                                 'jasmine-html': ['../test/js/libs/jasmine-html'],
                                 'jasmine-boot': ['../test/js/libs/boot'],
@@ -61,13 +62,15 @@
             jsonschema_amd_restclient_generator: {
                 custom_options: {
                     options: {
-                        base_url: 'http://fenix.fao.org/faostat/api/v1.0/',
+                        //base_url: 'http://fenix.fao.org/faostat/api/v1.0/',
+                        //base_url: 'http://fenix.fao.org/faostat/api/v1.0/',
                         //base_url: 'http://localhost:3000/api/v1.0/',
                         //base_url: 'http://fenixapps2.fao.org/api/v1.0/',
-                        //base_url: 'http://localhost:8081/api/v1.0/',
+                        base_url: 'http://localhost:8081/api/v1.0/',
                         output_name: 'FAOSTATAPIClient',
                         output_folder: 'src/js',
-                        useQ: true
+                        useQ: true,
+                        useCache: true
                     }
                 }
             }
