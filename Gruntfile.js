@@ -45,7 +45,8 @@
                                 'domain-reports-spec': ['../test/js/spec/DomainReportsSpec'],
                                 'report-headers-spec': ['../test/js/spec/ReportHeadersSpec'],
                                 'report-data-spec': ['../test/js/spec/ReportDataSpec'],
-                                'deploy-spec': ['../test/js/spec/DeploySpec']
+                                'deploy-spec': ['../test/js/spec/DeploySpec'],
+                                'metadata-spec': ['../test/js/spec/MetadataSpec']
                             },
                             shim: {
                                 'jasmine-html': {
@@ -62,7 +63,8 @@
             jsonschema_amd_restclient_generator: {
                 custom_options: {
                     options: {
-                        base_url: 'http://fenix.fao.org/faostat/api/v1.0/',
+                        base_url: 'http://localhost:8081/api/v1/',
+                        final_base_url: 'http://fenix.fao.org/faostat/api/v1/',
                         //base_url: 'http://localhost:3000/api/v1.0/',
                         //base_url: 'http://fenixapps2.fao.org/api/v1.0/',
                         //base_url: 'http://localhost:8081/api/v1.0/',

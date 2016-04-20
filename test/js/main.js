@@ -24,7 +24,8 @@ require.config({
         'domain-reports-spec': ['../test/js/spec/DomainReportsSpec'],
         'report-headers-spec': ['../test/js/spec/ReportHeadersSpec'],
         'report-data-spec': ['../test/js/spec/ReportDataSpec'],
-        'deploy-spec': ['../test/js/spec/DeploySpec']
+        'deploy-spec': ['../test/js/spec/DeploySpec'],
+        'metadata-spec': ['../test/js/spec/MetadataSpec']
     },
     shim: {
         'jasmine-html': {
